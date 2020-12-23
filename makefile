@@ -13,7 +13,7 @@ client.o: add_client.c
 	gcc -c add_client.c -o client.o
 
 add_basic.o: add_basics.c
-	gcc -c add_basics.c -o add_basic.o
+	gcc -c add_basics.c -o add_basic.o -D ADD_EXPORTS
 
 
 # regras de compilacao
