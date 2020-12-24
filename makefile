@@ -18,4 +18,4 @@ purge: clean
 
 # regras de utilização
 run: all
-	./client.exe
+	-./client.exe
