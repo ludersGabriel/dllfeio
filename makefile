@@ -3,7 +3,7 @@ CFLAGS = -Wall
 LDLIBS = 
 
 all: client.o 
-	gcc -o client.exe -s client.o
+	gcc -o client.exe -s client.o -L. -lpsapi
 
 # regra de ligacao
 client.o: client.c
