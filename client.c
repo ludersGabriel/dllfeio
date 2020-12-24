@@ -44,6 +44,7 @@ int main(int argc, char** argv){
 
     // Unload DLL
     FreeLibrary(hAddLib);
+    CloseHandle(currentHandle);
 
     return 0;
 }
