@@ -48,39 +48,14 @@ int main(int argc, char** argv){
     HANDLE currentHandle = GetCurrentProcess();
     LPSTR fileName;
     DWORD size;
-    fileName = malloc(sizeof(LPSTR) * 1000);
+    fileName = malloc(1024*sizeof(LPSTR));
 
-    if( ! (size = getName(currentHandle, fileName, 1000 * sizeof(char)))){
+    if( ! (size = getName(currentHandle, fileName, 1024 * sizeof(char)))){
         fprintf(stderr, "Error running GetName function.\n");
         return EXIT_FAILURE;
     }
 
     printf("My full path is: %s\n", fileName);
-
-    HMODULE modules[1024];
-    DWORD lpcNeeded;
-    if( !(getModules(currentHandle, modules, sizeof(modules), &lpcNeeded))){
-        fprintf(stderr, "Error running GetModules function\n");
-        return EXIT_FAILURE;
-    }
-    else{
-        for(unsigned int i = 0; i < (lpcNeeded / sizeof(HMODULE)); i++){
-            LPSTR moduleName;
-            moduleName = malloc(1024 * sizeof(LPSTR));
-
-            if(getModuleName(currentHandle, modules[i], moduleName, 1024 * sizeof(LPSTR))){
-                // print module name and handle value
-                 printf(("\t%s (0x%08X)\n"), moduleName, modules[i] );
-            }
-            else{
-                fprintf(stderr, "Error running GetModuleName function\n");
-                return EXIT_FAILURE;
-            }
-
-        }
-    }
-
-    
 
     // Unload DLL
     FreeLibrary(psapiLib);
