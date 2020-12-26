@@ -1,10 +1,9 @@
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <psapi.h>
 
-typedef DWORD (__cdecl *EnumModules)(HANDLE hprocess, HMODULE *moduleHandles, DWORD cb, LPDWORD lpcNeeded);
-typedef DWORD (__cdecl *GetModuleName)(HANDLE hprocess, HMODULE hmodule, LPSTR name, DWORD size);
+typedef DWORD (__stdcall *EnumModules)(HANDLE hprocess, HMODULE *moduleHandles, DWORD cb, LPDWORD lpcNeeded);
+typedef DWORD (__stdcall *GetModuleName)(HANDLE hprocess, HMODULE hmodule, LPSTR name, DWORD size);
 
 void ErrorMessage(const char *message){
     fprintf(stderr, message);
@@ -43,7 +42,7 @@ int PrintModules( HANDLE pHandle )
             // Get the full path to the module's file.
 
             // change GetModuleFileNameExA with getModuleName to see the error
-            if ( GetModuleFileNameExA( pHandle, hMods[i], szModName, 1024 * sizeof(char))){
+            if ( getModuleName( pHandle, hMods[i], szModName, 1024 * sizeof(char))){
                 // Print the module name and handle value.
                 printf(("\t%s (0x%08X)\n"), szModName, hMods[i] );
                 
