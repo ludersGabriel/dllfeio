@@ -2,20 +2,20 @@
 CFLAGS = -Wall
 LDLIBS = 
 
-all: client.o 
-	gcc -o client.exe -s client.o
+main: main.o 
+	gcc -o main.exe -s main.o
 
 # regra de ligacao
-client.o: client.c
-	gcc -c client.c -o client.o
+main.o: main.c
+	gcc -c main.c -o main.o
 
 # regras de limpeza
 clean:
 	-rm -f *.o
 
 purge: clean
-	-rm -f client.exe
+	-rm -f main.exe
 
 # regras de utilização
-run: all
-	-./client.exe
+run: main
+	./main.exe

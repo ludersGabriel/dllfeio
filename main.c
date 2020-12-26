@@ -58,7 +58,13 @@ int PrintModules( HANDLE pHandle )
 int main( void )
 {
     HANDLE myHandle = GetCurrentProcess();
-    PrintModules(myHandle);
+    for(;;){
+        printf("These are all my modules\n");
+        PrintModules(myHandle);
+        printf("\n");
+
+        Sleep(1000 * 2);
+    }
     CloseHandle(myHandle);
 
     return 0;
