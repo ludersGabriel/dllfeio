@@ -79,7 +79,7 @@ void FreeM(const char *mName){
     HMODULE mHandle = GetModuleHandleA(mName);
     FreeLibrary(mHandle);
     char message[200];
-    sprintf(message, "%s tomou dload do programa", mName);
+    sprintf(message, "%s tomou unloadload do programa", mName);
     MessageBox(0, message, "dLoad", MB_ICONINFORMATION);
 }
 
