@@ -2,12 +2,15 @@
 CFLAGS = -Wall
 LDLIBS = 
 
-main: main.o 
-	gcc -o main.exe -s main.o
+main: main.o utils.o
+	gcc -o main.exe -s main.o utils.o
 
 # regra de ligacao
 main.o: main.c
 	gcc -c main.c -o main.o
+
+utils.o: utils.c
+	gcc -c utils.c -o utils.o
 
 # regras de limpeza
 clean:
