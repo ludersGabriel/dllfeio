@@ -63,7 +63,7 @@ int main(void){
     printf("main.exe: %d\n", pID);
 
     // dll soon to be injected
-    LPSTR dllPath = "D:\\Dev\\Gregio\\makingdlls\\dlls\\mainDll.dll";
+    LPSTR dllPath = ".\\dlls\\mainDll.dll";
 
     // Open a handle
     HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, pID);
