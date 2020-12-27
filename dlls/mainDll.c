@@ -17,7 +17,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD callReason, LPVOID lpReserved){
         if(! getmHandle) ErrorMessage("Error loading getMHandle\n");
         
         HMODULE mHandle;
-            getmHandle(GET_MODULE_HANDLE_EX_FLAG_PIN, "D:\\Dev\\Gregio\\dllfeio\\dlls\\mainDll.dll", &mHandle);
+        getmHandle(GET_MODULE_HANDLE_EX_FLAG_PIN, "D:\\Dev\\Gregio\\dllfeio\\dlls\\mainDll.dll", &mHandle);
         if(! mHandle) ErrorMessage("Error getting persistent handleeeeeee\n");
         
         MessageBox(0, "Hello from the injected dll", "Hello", MB_ICONINFORMATION);
