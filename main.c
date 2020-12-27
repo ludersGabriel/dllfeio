@@ -9,6 +9,8 @@
 
 typedef DWORD (__stdcall *EnumModules)(HANDLE hprocess, HMODULE *moduleHandles, DWORD cb, LPDWORD lpcNeeded);
 typedef DWORD (__stdcall *GetModuleName)(HANDLE hprocess, HMODULE hmodule, LPSTR name, DWORD size);
+typedef BOOL (__stdcall *GetModuleHandleExA)(DWORD flags, LPCSTR name, HMODULE hModule);
+
 
 void InitializeMatrix(char*** matrix){
     for(int i = 0; i < LIN; i++)
@@ -24,7 +26,7 @@ char** GetModules( HANDLE pHandle)
     if (NULL == pHandle) ErrorMessage("Null process handle\n");
 
     // Loads the lib
-    HMODULE psapiLib = LoadLibrary("C:\\Windows\\SysWOW64\\psapi.dll");
+    HMODULE psapiLib = LoadLibrary("psapi.dll");
     if(! psapiLib) ErrorMessage("Error loading psapi.dll\n");
 
     // Get the functions we need from the lib
