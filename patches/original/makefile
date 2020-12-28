@@ -1,8 +1,8 @@
 
-main: main.o  maindll
+main: main.o  main.dll
 	gcc -o main.exe main.o
 
-maindll: maindll.o
+main.dll: maindll.o
 	gcc -o maindll.dll -s -shared maindll.o
 
 main.o: main.c
